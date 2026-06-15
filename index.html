@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layanan Panel & Nokos Premium</title>
+    <style>
+        /* --- CSS UNTUK TAMPILAN MEGAH & MODERN --- */
+        :root {
+            --primary-color: #00f2ff; /* Cyan Neon */
+            --secondary-color: #7000ff; /* Ungu Neon */
+            --bg-overlay: rgba(10, 10, 20, 0.9); /* Lebih gelap agar teks terbaca jelas */
+            --card-bg: rgba(255, 255, 255, 0.08);
+            --text-color: #ffffff;
+            --accent-gold: #ffd700;
+            --whatsapp-green: #25D366;
+            --telegram-blue: #0088cc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            /* PASTIKAN NAMA FILE GAMBAR SESUAI */
+            background-image: url('background.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background: var(--bg-overlay);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            min-height: 100vh;
+            padding: 20px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.8);
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-top: 20px;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .owner-badge {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #000;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+        }
+
+        /* Navigasi Tombol */
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            filter: brightness(1.2);
+        }
+
+        .btn-wa { background: var(--whatsapp-green); }
+        .btn-tg { background: var(--telegram-blue); }
+        .btn-primary { 
+            background: linear-gradient(90deg, var(--secondary-color), var(--primary-color)); 
+        }
+        
+        .btn-channel {
+            background: linear-gradient(90deg, #005c99, #0088cc);
+            width: 100%;
+            margin-top: 10px;
+            padding: 15px;
+            font-size: 1.1rem;
+            display: block;
+            text-align: center;
+        }
+
+        /* Bagian Konten */
+        .content-section {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #e0e0e0;
+            font-size: 0.95rem;
+            text-align: justify;
+        }
+
+        .highlight-box {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid var(--accent-gold);
+            margin-top: 10px;
+        }
+
+        .highlight-title {
+            color: var(--accent-gold);
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: block;
+            font-size: 1.1rem;
+        }
+
+        ul {
+            margin-left: 20px;
+            color: #ccc;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        /* Daftar Harga Produk */
+        .product-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .product-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+        }
+
+        .product-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #fff;
+        }
+
+        .product-price-main {
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .price-range {
+            font-size: 0.9rem;
+            color: #aaa;
+            margin-top: 5px;
+        }
+
+        .price-list-detail {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px;
+        }
+
+        .price-list-detail li {
+            font-size: 0.85rem;
+            color: #ddd;
+            background: rgba(0,0,0,0.2);
+            padding: 5px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #aaa;
+            padding: 20px 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 20px;
+        }
+
+        /* Animasi */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+    <header class="fade-in">
+        <div class="owner-badge">👑 OWNER: @Manz3201</div>
+        <h1>PANEL & NOKOS PREMIUM</h1>
+        <p style="color:#ccc;">Legal • Aman • Anti Maling • Terjamin</p>
+    </header>
+
+    <!-- NAVIGASI -->
+    <div class="nav-buttons fade-in">
+        <a href="#produk" class="btn btn-primary">📦 Lihat Produk</a>
+        <a href="https://wa.me/6287825121119" target="_blank" class="btn btn-wa">📞 WhatsApp</a>
+        <a href="https://t.me/Manz3210" target="_blank" class="btn btn-tg">✈️ Telegram</a>
+        <a href="#harga" class="btn btn-primary">💰 List Harga</a>
+    </div>
+
+    <!-- SAMBUTAN & PENJELASAN -->
+    <section class="content-section fade-in">
+        <h2>Selamat Datang!</h2>
+        <p>Kami menyediakan layanan <strong>Nokos (Nomor Kosong)</strong> dan <strong>Panel Legal</strong> berkualitas tinggi untuk kebutuhan bisnis atau pribadi Anda.</p>
+
+        <div class="highlight-box">
+            <span class="highlight-title">️ Tentang Nokos:</span>
+            <p>Nomor yang dijual di layanan lain umumnya adalah nomor VoIP (virtual berbasis internet), sehingga risikonya lebih tinggi untuk ditolak atau terkena pembatasan dibandingkan nomor SIM fisik.</p>
+            <ul>
+                <li>Jangan langsung memulai chat, biarkan orang lain yang lebih dulu mengajak bicara</li>
+                <li>Hindari join grup atau melakukan spam</li>
+                <li>Jika terlalu banyak login di perangkat yang sama, coba gunakan perangkat lain agar tidak terkena lock oleh sistem WhatsApp.</li>
+            </ul>
+        </div>
+
+        <div class="highlight-box">
+            <span class="highlight-title">️ Tentang Panel:</span>
+            <p>Panel ini legal dan berkualitas anti maling dan anti intip. Wajar jika mahal karena ini legal dan terjamin aman.</p>
+            <p>Untuk ADP dan Reseller akan dikenakan masa perpanjang perbulan <strong>Rp6.000,-</strong> karena untuk memperpanjang masa VPS.</p>
+            <p><em>Jika kamu berminat silahkan dipilih dan dilihat menu produk yang ada.</em></p>
+        </div>
+    </section>
+
+    <!-- LIST HARGA DETAIL -->
+    <section id="harga" class="content-section fade-in">
+        <h2>💰 Daftar Harga Lengkap</h2>
+        <div class="product-list">
+            
+            <!-- Nokos -->
+            <div class="product-card">
+                <div class="product-header">
+                    <span class="product-name">Nokos Panel Legal</span>
+                    <span class="product-price-main">Rp7.000</span>
+                </div>
+                <p class="price-range">Nomor kosong siap pakai untuk verifikasi.</p>
+            </div>
+
+            <!-- Panel Legal (Varian Harga) -->
+            <div class="product-card">
+                <div class="product-header">
+                    <span class="product-name">Panel Legal (Storage)</span>
+                    <span class="product-price-main">Mulai Rp1.000</span>
+                </div>
+                <ul class="price-list-detail">
+                    <li>1 GB: Rp1.000</li>
+                    <li>2 GB: Rp2.000</li>
+                    <li>3 GB: Rp3.000</li>
+                    <li>5 GB: Rp5.000</li>
+                    <li>10 GB: Rp10.000</li>
+                    <li>Unlimited: Rp15.000</li>
+                </ul>
+                <p class="price-range" style="text-align:center; margin-top:10px; color:var(--primary-color);">*Harga termurah di kelasnya!</p>
+            </div>
+
+            <!-- Reseller -->
+            <div class="product-card">
+                <div class="product-header">
+                    <span class="product-name">Reseller Panel</span>
+                    <span class="product-price-main">Rp20.000</span>
+                </div>
+                <p class="price-range">+ Perpanjangan Rp6.000/bulan</p>
+            </div>
+
+            <!-- Admin Panel -->
+            <div class="product-card">
+                <div class="product-header">
+                    <span class="product-name">Admin Panel (ADP)</span>
+                    <span class="product-price-main">Rp25.000</span>
+                </div>
+                <p class="price-range">+ Perpanjangan Rp6.000/bulan</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- LIHAT PRODUK -->
+    <section id="produk" class="content-section fade-in">
+        <h2> Produk Tersedia</h2>
+        <p>Berikut adalah produk yang tersedia saat ini:</p>
+        <ul>
+            <li><strong>Nokos Panel Legal</strong> - Nomor kosong siap pakai, cocok untuk verifikasi akun.</li>
+            <li><strong>Panel Legal (1GB - Unlimited)</strong> - Mulai dari Rp1.000 hingga Rp15.000 tergantung kapasitas storage.</li>
+            <li><strong>Reseller Panel</strong> - Untuk reseller, harga Rp20.000/bulan.</li>
+            <li><strong>Admin Panel (ADP)</strong> - Untuk admin, harga Rp25.000/bulan.</li>
+        </ul>
+        <p><em>Ingin beli? Hubungi kami via WhatsApp atau Telegram di tombol atas!</em></p>
+    </section>
+
+    <!-- CHANNEL TELEGRAM -->
+    <div class="channel-btn-container fade-in">
+        <a href="https://t.me/FREEpanel2010" target="_blank" class="btn btn-channel">
+             🚀 JOIN CHANNEL TELEGRAM GRATIS
+        </a>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="fade-in">
+        <p>© 2026 Panel & Nokos Premium by @Manz3201</p>
+        <p>WhatsApp: 6287825121119 | Telegram: @Manz3210</p>
+    </footer>
+
+</div>
+
+</body>
+</html>
